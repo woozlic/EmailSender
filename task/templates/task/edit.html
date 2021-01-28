@@ -1,0 +1,54 @@
+{% extends 'task/base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <p>Редактирование записи</p>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.errors %}
+        <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error|escape }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message|safe }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <table>
+            <tr>
+                <td>Имя</td>
+                <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+                <td>Дата рождения</td>
+                <td>{{ form.date_birth }}</td>
+            </tr>
+            <tr>
+                <td>Зарплата</td>
+                <td>{{ form.salary }}</td>
+            </tr>
+            <tr>
+                <td>Эл. почта</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>Текущий документ</td>
+                <td><a href ="{{ current_file.url }}">{{ current_file }}</a></td>
+            </tr>
+            <tr>
+                <td>Изменить документ</td>
+                <td>{{ form.docs }}</td>
+            </tr>
+
+        </table>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

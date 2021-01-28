@@ -1,0 +1,51 @@
+{% extends 'task/base.html' %}
+{% load static %}
+
+{% block title %}Задание 1{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.errors %}
+        <ul>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error|escape }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message|safe }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+        <table>
+            <tr>
+                <td>Имя</td>
+                <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+                <td>Дата рождения</td>
+                <td>{{ form.date_birth }}</td>
+            </tr>
+            <tr>
+                <td>Зарплата</td>
+                <td>{{ form.salary }}</td>
+            </tr>
+            <tr>
+                <td>Эл. почта</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>Документ</td>
+                <td>{{ form.docs }}</td>
+            </tr>
+
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+
+{% endblock %}

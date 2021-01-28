@@ -1,0 +1,16 @@
+td{
+    border: black solid 1px;
+}
+table{
+    width: 30%;
+    height: 200px;
+}
+.navbar{
+    display: inline-block;
+}
+.content{
+    margin-top: 10px;
+}
+ul{
+    list-style: none;
+}
