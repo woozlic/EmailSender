@@ -14,13 +14,8 @@
 {% block content %}
     {% for obj in all_objects %}
         <ul class="">
-            <li>Запись №{{ obj.id }}</li>
-            <li>{{ obj.name }}</li>
-            <li>{{ obj.date_birth }}</li>
-            <li>{{ obj.salary }}</li>
-            <li>{{ obj.email }}</li>
-            <li>{{ obj.docs }}</li>
-            <a href="{% url 'edit' obj.id %}"><button>Редактировать</button></a><a href="{% url 'delete_post' obj.id %}"><button>Удалить</button></a>
+              <a href="{{ MEDIA_URL }}/reports/{{ obj }}"><li>{{ obj }}</li></a>
+{#            <a href="{% url 'delete_post' obj.id %}"><button>Удалить</button></a>#}
         </ul>
         <hr>
     {% endfor %}
